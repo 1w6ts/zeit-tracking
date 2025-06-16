@@ -30,8 +30,8 @@ interface SocialLink {
 
 const LogoSection = () => (
   <div className="relative">
-    <div className="flex items-center space-x-2 mb-4">
-      <Logo className="h-8 w-8" />
+    <div className="mb-4 flex items-center space-x-2">
+      <Logo className="size-8" />
       <span className="text-2xl font-bold tracking-tight">ZEIT</span>
     </div>
     <p className="text-muted-foreground max-w-sm">
@@ -49,7 +49,7 @@ const FooterNavSection = ({ section }: { section: FooterSection }) => (
         <a
           key={index}
           href={link.href}
-          className="block transition-colors hover:text-primary"
+          className="hover:text-primary block transition-colors"
         >
           {link.label}
         </a>
@@ -85,8 +85,8 @@ const SocialSection = () => (
         </TooltipProvider>
       ))}
     </div>
-    <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-      <Clock className="h-4 w-4" />
+    <div className="text-muted-foreground flex items-center space-x-2 text-sm">
+      <Clock className="size-4" />
       <span>Open Source Time Tracking</span>
     </div>
   </div>
@@ -113,17 +113,17 @@ const FOOTER_SECTIONS: FooterSection[] = [
 
 const SOCIAL_LINKS: SocialLink[] = [
   {
-    icon: <FaGithub className="h-4 w-4" />,
+    icon: <FaGithub className="size-4" />,
     label: "View on GitHub",
     href: "https://github.com/zeitgg/zeit",
   },
   {
-    icon: <FaTwitter className="h-4 w-4" />,
+    icon: <FaTwitter className="size-4" />,
     label: "Follow on Twitter",
     href: "https://x.com/zeitdotgg",
   },
   {
-    icon: <FaLinkedin className="h-4 w-4" />,
+    icon: <FaLinkedin className="size-4" />,
     label: "Connect on LinkedIn",
     href: "https://linkedin.com/company/zeitgg",
   },
@@ -144,7 +144,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
+    <footer className="bg-background text-foreground relative border-t transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <LogoSection />
@@ -157,7 +157,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             © {currentYear} {COMPANY_INFO.name}. All rights reserved.
           </p>
           <nav className="flex gap-4 text-sm">
@@ -165,7 +165,7 @@ export function Footer() {
               <a
                 key={index}
                 href={link.href}
-                className="transition-colors hover:text-primary"
+                className="hover:text-primary transition-colors"
               >
                 {link.label}
               </a>

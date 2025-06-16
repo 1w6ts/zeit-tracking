@@ -51,13 +51,13 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <Logo className="h-6 w-6" />
+              <Logo className="size-6" />
             </Link>
           </div>
 
@@ -76,7 +76,7 @@ export function Navbar() {
                           <NavigationMenuLink asChild>
                             <Link
                               href={subItem.href}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors"
                             >
                               <div className="text-sm font-medium leading-none">
                                 {subItem.title}
@@ -93,7 +93,7 @@ export function Navbar() {
           </NavigationMenu>
 
           {/* Desktop Auth Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden items-center space-x-4 lg:flex">
             <Button variant="ghost" asChild>
               <Link href="/login">Log in</Link>
             </Button>
@@ -111,20 +111,20 @@ export function Navbar() {
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
+              <X className="size-5" />
             ) : (
-              <Menu className="h-5 w-5" />
+              <Menu className="size-5" />
             )}
           </Button>
         </div>
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t bg-background">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="bg-background border-t lg:hidden">
+            <div className="space-y-1 px-2 pb-3 pt-2">
               {navigationItems.map((item) => (
                 <div key={item.title} className="py-2">
-                  <h3 className="px-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                  <h3 className="text-muted-foreground mb-2 px-3 text-xs font-semibold uppercase tracking-wider">
                     {item.title}
                   </h3>
                   <div className="space-y-1">
@@ -132,7 +132,7 @@ export function Navbar() {
                       <Link
                         key={subItem.title}
                         href={subItem.href}
-                        className="block px-3 py-2 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                        className="hover:bg-accent hover:text-accent-foreground block rounded-md px-3 py-2 text-sm font-medium transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {subItem.title}
@@ -143,7 +143,7 @@ export function Navbar() {
               ))}
 
               {/* Mobile Auth Buttons */}
-              <div className="pt-4 mt-4 border-t space-y-2">
+              <div className="mt-4 space-y-2 border-t pt-4">
                 <Button
                   variant="ghost"
                   className="w-full justify-start"

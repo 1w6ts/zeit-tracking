@@ -34,7 +34,7 @@ interface ComplianceItem {
 const FeatureCard = ({ children, className }: FeatureCardProps) => (
   <div
     className={cn(
-      "group relative border-border/50 bg-card/20 backdrop-blur-sm border",
+      "border-border/50 bg-card/20 group relative border backdrop-blur-sm",
       className
     )}
   >
@@ -76,7 +76,7 @@ const MainFeatureCard = ({ feature }: { feature: FeatureItem }) => (
       <CardContent>
         <div className="relative mb-6 sm:mb-0">
           <div className="absolute -inset-6 [background:radial-gradient(50%_50%_at_75%_50%,transparent,hsl(var(--background))_100%)]"></div>
-          <div className="aspect-[76/59] p-4 flex items-center justify-center">
+          <div className="flex aspect-[76/59] items-center justify-center p-4">
             {feature.preview}
           </div>
         </div>
@@ -84,7 +84,7 @@ const MainFeatureCard = ({ feature }: { feature: FeatureItem }) => (
     ) : (
       <div className="relative mb-6 border-t border-dashed sm:mb-0">
         <div className="absolute inset-0 [background:radial-gradient(125%_125%_at_50%_0%,transparent_40%,hsl(var(--muted))_80%,hsl(var(--background))_125%)]"></div>
-        <div className="aspect-[76/59] p-6 flex items-center justify-center">
+        <div className="flex aspect-[76/59] items-center justify-center p-6">
           {feature.preview}
         </div>
       </div>
@@ -93,20 +93,20 @@ const MainFeatureCard = ({ feature }: { feature: FeatureItem }) => (
 );
 
 const TimeTrackingPreview = () => (
-  <div className="w-full max-w-sm bg-background/80 backdrop-blur-sm rounded-lg border p-4 space-y-3">
+  <div className="bg-background/80 w-full max-w-sm space-y-3 rounded-lg border p-4 backdrop-blur-sm">
     <div className="flex items-center justify-between">
       <span className="text-sm font-medium">Current Task</span>
       <div className="flex items-center space-x-2">
-        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-        <span className="text-lg font-mono">2:34:12</span>
+        <div className="size-2 animate-pulse rounded-full bg-green-500"></div>
+        <span className="font-mono text-lg">2:34:12</span>
       </div>
     </div>
     <div className="space-y-2">
       {TIME_ENTRIES.map((entry, index) => (
         <div key={index} className="flex items-center space-x-2">
-          <div className={`w-2 h-2 ${entry.color} rounded-full`}></div>
+          <div className={`size-2 ${entry.color} rounded-full`}></div>
           <span className="text-sm">{entry.project}</span>
-          <span className="text-xs text-muted-foreground ml-auto">
+          <span className="text-muted-foreground ml-auto text-xs">
             {entry.time}
           </span>
         </div>
@@ -116,23 +116,23 @@ const TimeTrackingPreview = () => (
 );
 
 const AnalyticsPreview = () => (
-  <div className="w-full max-w-sm bg-background/80 backdrop-blur-sm rounded-lg border p-4 space-y-4">
+  <div className="bg-background/80 w-full max-w-sm space-y-4 rounded-lg border p-4 backdrop-blur-sm">
     <div className="grid grid-cols-2 gap-4">
       {ANALYTICS_METRICS.map((metric, index) => (
         <div key={index} className="text-center">
           <div className="text-2xl font-bold">{metric.value}</div>
-          <div className="text-xs text-muted-foreground">{metric.label}</div>
+          <div className="text-muted-foreground text-xs">{metric.label}</div>
         </div>
       ))}
     </div>
     <div className="space-y-2">
       {PROGRESS_ITEMS.map((item, index) => (
         <div key={index}>
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <span className="text-xs">{item.category}</span>
-            <span className="text-xs font-mono">{item.percentage}%</span>
+            <span className="font-mono text-xs">{item.percentage}%</span>
           </div>
-          <div className="w-full bg-muted rounded-full h-1.5">
+          <div className="bg-muted h-1.5 w-full rounded-full">
             <div
               className={`${item.color} h-1.5 rounded-full`}
               style={{ width: `${item.percentage}%` }}
@@ -155,13 +155,13 @@ const ComplianceFeature = ({
 
   return (
     <div className={cn("flex flex-col items-center", className)}>
-      <div className="bg-gradient-to-b from-border/50 to-transparent rounded-2xl p-px">
-        <div className="bg-gradient-to-b from-background to-muted/25 relative flex aspect-square w-16 items-center justify-center rounded-[15px] p-4">
+      <div className="from-border/50 rounded-2xl bg-gradient-to-b to-transparent p-px">
+        <div className="from-background to-muted/25 relative flex aspect-square w-16 items-center justify-center rounded-[15px] bg-gradient-to-b p-4">
           <div className="relative">
-            <IconComponent className="size-6 text-muted-foreground" />
+            <IconComponent className="text-muted-foreground size-6" />
             <div
               className={cn(
-                "absolute -top-1 -right-1 size-3 rounded-full border-2 border-background",
+                "border-background absolute -right-1 -top-1 size-3 rounded-full border-2",
                 statusColor
               )}
             ></div>
@@ -249,11 +249,11 @@ export function Features() {
   return (
     <section className="bg-muted/30 py-16 md:py-24">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-5xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-semibold tracking-tight md:text-4xl">
             {SECTION_CONFIG.title}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             {SECTION_CONFIG.subtitle}
           </p>
         </div>

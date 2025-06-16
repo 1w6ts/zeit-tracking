@@ -23,7 +23,7 @@ interface BenefitItem {
 const CTACard = ({ children, className }: CTACardProps) => (
   <div
     className={cn(
-      "group relative border-border/50 bg-card/20 backdrop-blur-sm border",
+      "border-border/50 bg-card/20 group relative border backdrop-blur-sm",
       className
     )}
   >
@@ -49,14 +49,14 @@ const BenefitCard = ({ benefit }: { benefit: BenefitItem }) => {
       <div className="p-6 text-center">
         <div
           className={cn(
-            "w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4",
+            "mx-auto mb-4 flex size-12 items-center justify-center rounded-xl",
             benefit.color.bg
           )}
         >
-          <IconComponent className={cn("w-6 h-6", benefit.color.icon)} />
+          <IconComponent className={cn("size-6", benefit.color.icon)} />
         </div>
-        <h3 className="font-semibold mb-2">{benefit.title}</h3>
-        <p className="text-sm text-muted-foreground">{benefit.description}</p>
+        <h3 className="mb-2 font-semibold">{benefit.title}</h3>
+        <p className="text-muted-foreground text-sm">{benefit.description}</p>
       </div>
     </CTACard>
   );
@@ -64,9 +64,9 @@ const BenefitCard = ({ benefit }: { benefit: BenefitItem }) => {
 
 const CTASection = () => (
   <CTACard className="p-8 lg:col-span-3">
-    <div className="text-center max-w-md mx-auto space-y-6">
+    <div className="mx-auto max-w-md space-y-6 text-center">
       <div>
-        <h3 className="text-xl font-semibold mb-2">
+        <h3 className="mb-2 text-xl font-semibold">
           Ready to explore the code?
         </h3>
         <p className="text-muted-foreground">
@@ -74,16 +74,16 @@ const CTASection = () => (
           source code.
         </p>
       </div>
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+      <div className="flex flex-col justify-center gap-3 sm:flex-row">
         <Button asChild className="font-medium">
           <Link
             href="https://github.com/zeitgg/zeit"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub className="w-4 h-4 mr-2" />
+            <FaGithub className="mr-2 size-4" />
             View on GitHub
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <ArrowRight className="ml-2 size-4" />
           </Link>
         </Button>
       </div>
@@ -134,21 +134,21 @@ export function CTA() {
   return (
     <section className="bg-muted/30 py-16 md:py-24">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-5xl">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-2 rounded-lg bg-primary/10">
-              <Lock className="w-5 h-5 text-primary transform rotate-12" />
+        <div className="mb-16 text-center">
+          <div className="mb-4 inline-flex items-center gap-3">
+            <div className="bg-primary/10 rounded-lg p-2">
+              <Lock className="text-primary size-5 rotate-12" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
               {SECTION_CONFIG.title}
             </h2>
           </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             {SECTION_CONFIG.subtitle}
           </p>
         </div>
 
-        <div className="mx-auto grid gap-6 lg:grid-cols-3 mb-12">
+        <div className="mx-auto mb-12 grid gap-6 lg:grid-cols-3">
           {BENEFITS.map((benefit, index) => (
             <BenefitCard key={index} benefit={benefit} />
           ))}
