@@ -1,7 +1,9 @@
+import HeroSection from "@/components/marketing/hero";
+
 export default function Home() {
   return (
-    <div>
-      <h1>ZEIT</h1>
+    <div className="min-h-screen">
+      <HeroSection />
     </div>
   );
 }
