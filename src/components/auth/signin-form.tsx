@@ -7,7 +7,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  ArrowRight,
+  Loader2,
+  Link2Off,
+} from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 
 interface SignInFormProps {
   onSubmit?: (data: SignInData) => void;
@@ -66,17 +76,27 @@ export function SignInForm({ onSubmit, className }: SignInFormProps) {
     setIsLoading(true);
     setAuthError("");
 
-    try {
-      // TODO: Implement authentication
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      onSubmit?.(formData);
-      router.push("/dashboard");
-    } catch (error) {
-      console.error("Sign in error:", error);
-      setAuthError("An unexpected error occurred. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+    const { data, error } = await authClient.signIn.email(
+      {
+        email: formData.email,
+        password: formData.password,
+        callbackURL: "/dashboard",
+      },
+      {
+        onRequest: (ctx) => {
+          // Loading state is already handled by setIsLoading(true) above
+        },
+        onSuccess: (ctx) => {
+          onSubmit?.(formData);
+          router.push("/dashboard");
+          setIsLoading(false);
+        },
+        onError: (ctx) => {
+          setAuthError(ctx.error.message);
+          setIsLoading(false);
+        },
+      }
+    );
   };
 
   const handleInputChange = (
@@ -180,11 +200,10 @@ export function SignInForm({ onSubmit, className }: SignInFormProps) {
               </div>
             )}
 
-            {/* Submit Button */}
             <Button type="submit" className="w-full group" disabled={isLoading}>
               {isLoading ? (
                 <>
-                  <div className="mr-2 size-4 animate-spin border-2 border-current border-t-transparent" />
+                  <Loader2 className="mr-2 size-4 animate-spin" />
                   Signing in...
                 </>
               ) : (
@@ -196,13 +215,13 @@ export function SignInForm({ onSubmit, className }: SignInFormProps) {
             </Button>
           </form>
 
-          {/* Divider */}
-
           <p className="text-muted-foreground mt-6 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <Button variant="link" className="h-auto p-0 text-sm">
-              Sign up for free
-            </Button>
+            <Link href="/signup">
+              <Button variant="link" className="h-auto p-0 text-sm">
+                Sign up for free
+              </Button>
+            </Link>
           </p>
         </CardContent>
       </div>
