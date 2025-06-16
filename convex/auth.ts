@@ -20,7 +20,7 @@ export const betterAuthComponent = new BetterAuth(components.betterAuth, {
 
 export const createAuth = (ctx: GenericCtx) =>
   betterAuth({
-    baseURL: "http://localhost:3000",
+    baseURL: process.env.BASE_URL,
     database: convexAdapter(ctx, betterAuthComponent),
 
     emailAndPassword: {
