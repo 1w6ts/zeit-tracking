@@ -7,15 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import {
-  Eye,
-  EyeOff,
-  Mail,
-  Lock,
-  ArrowRight,
-  Loader2,
-  Link2Off,
-} from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, ArrowRight, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 
@@ -76,17 +68,14 @@ export function SignInForm({ onSubmit, className }: SignInFormProps) {
     setIsLoading(true);
     setAuthError("");
 
-    const { data, error } = await authClient.signIn.email(
+    await authClient.signIn.email(
       {
         email: formData.email,
         password: formData.password,
         callbackURL: "/dashboard",
       },
       {
-        onRequest: (ctx) => {
-          // Loading state is already handled by setIsLoading(true) above
-        },
-        onSuccess: (ctx) => {
+        onSuccess: () => {
           onSubmit?.(formData);
           router.push("/dashboard");
           setIsLoading(false);

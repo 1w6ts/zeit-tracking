@@ -96,7 +96,7 @@ export function SignUpForm({ onSubmit, className }: SignUpFormProps) {
     setIsLoading(true);
     setAuthError("");
 
-    const { data, error } = await authClient.signUp.email(
+    await authClient.signUp.email(
       {
         email: formData.email,
         password: formData.password,
@@ -104,10 +104,10 @@ export function SignUpForm({ onSubmit, className }: SignUpFormProps) {
         callbackURL: "/dashboard",
       },
       {
-        onRequest: (ctx) => {
+        onRequest: () => {
           // Loading state is already handled by setIsLoading(true) above
         },
-        onSuccess: (ctx) => {
+        onSuccess: () => {
           onSubmit?.(formData);
           router.push("/dashboard");
           setIsLoading(false);
