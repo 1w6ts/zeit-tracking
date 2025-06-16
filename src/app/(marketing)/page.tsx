@@ -1,5 +1,6 @@
 import { CTA } from "@/components/marketing/cta";
 import { Features } from "@/components/marketing/features";
+import { Footer } from "@/components/marketing/footer";
 import HeroSection from "@/components/marketing/hero";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroSection />
       <Features />
       <CTA />
+      <Footer />
     </div>
   );
 }
