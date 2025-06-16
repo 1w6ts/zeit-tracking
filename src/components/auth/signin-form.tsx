@@ -7,9 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { authClient } from "@/lib/auth-client";
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 
 interface SignInFormProps {
   onSubmit?: (data: SignInData) => void;
@@ -69,18 +67,9 @@ export function SignInForm({ onSubmit, className }: SignInFormProps) {
     setAuthError("");
 
     try {
-      const result = await authClient.signIn.email({
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (result.error) {
-        setAuthError(result.error.message || "Failed to sign in");
-        return;
-      }
-
+      // TODO: Implement authentication
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       onSubmit?.(formData);
-
       router.push("/dashboard");
     } catch (error) {
       console.error("Sign in error:", error);
@@ -208,27 +197,6 @@ export function SignInForm({ onSubmit, className }: SignInFormProps) {
           </form>
 
           {/* Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <span className="bg-background border-border w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background text-muted-foreground px-2">
-                Or continue with
-              </span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" type="button" disabled={isLoading}>
-              <FaGoogle />
-              Google
-            </Button>
-            <Button variant="outline" type="button" disabled={isLoading}>
-              <FaGithub />
-              GitHub
-            </Button>
-          </div>
 
           <p className="text-muted-foreground mt-6 text-center text-sm">
             Don't have an account?{" "}
