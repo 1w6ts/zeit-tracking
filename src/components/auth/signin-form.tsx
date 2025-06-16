@@ -199,7 +199,7 @@ export function SignInForm({ onSubmit, className }: SignInFormProps) {
           {/* Divider */}
 
           <p className="text-muted-foreground mt-6 text-center text-sm">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Button variant="link" className="h-auto p-0 text-sm">
               Sign up for free
             </Button>

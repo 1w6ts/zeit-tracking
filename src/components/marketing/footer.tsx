@@ -7,7 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Clock, Twitter, Linkedin } from "lucide-react";
+import { Clock } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { ReactNode } from "react";
 import Logo from "../brand/logo";
