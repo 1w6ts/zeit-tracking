@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source srcset="public/zeit.svg" media="(prefers-color-scheme: dark)">
-    <img src="public/zeit.svg" alt="ZEIT Logo" width="150" />
+    <img src="public/zeit.svg" alt="ZEIT Logo" width="64" />
   </picture>
 </p>
 
