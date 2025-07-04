@@ -1,8 +1,8 @@
-"use client";
-
 import * as React from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+
+import { getSignInUrl, getSignUpUrl } from "@workos-inc/authkit-nextjs";
 
 import {
   NavigationMenu,
@@ -42,8 +42,11 @@ const navigationItems = [
   },
 ];
 
-export function Navbar() {
+export function  Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+  const signInUrl = getSignInUrl();
+  const signUpUrl = getSignUpUrl();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
