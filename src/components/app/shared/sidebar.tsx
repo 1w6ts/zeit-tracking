@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/sidebar";
 import { Badge } from "@/components/ui/badge";
 import Logo from "@/components/brand/logo";
-import { SidebarUserButton } from "./sidebar-user-button";
 
 // Main navigation items
 const mainNavItems = [
@@ -195,7 +194,7 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter className="border-t border-sidebar-border/50 p-3">
-        <SidebarUserButton />
+        <h1>User button later.</h1>
       </SidebarFooter>
     </Sidebar>
   );
